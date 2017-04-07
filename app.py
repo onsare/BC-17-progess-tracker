@@ -5,20 +5,27 @@ import model
 while(True):
   ui.print_menu()
 
-  user_input = logic.user_input("Please Enter your selection")
+  user_input = logic.user_input("Please Enter your selection: ")
   if user_input == "1":
     task = logic.user_input("Please enter your task: ")
-    progress = logic.user_input("Please enter your task progress")
+    progress = logic.user_input("Please enter your task progress: ")
 
     model.insert_task(task)
     model.insert_progress(task, progress)
     #makes program pause
-    user_input = logic.user_input("Press any key to continue")
+    logic.user_input("Press any key to continue")
   elif user_input == "2":
-    pass
     course = logic.user_input("Please enter your task to be queried")
     # query dictionary
-    model.print_progress(course,model.db['tasks'][course] )
+    ui.print_progress(course, model.get_progress(course))
+    logic.user_input("Press any key to continue")
+  elif user_input == "3":
+      many = False
+      for task in model.get_tasks():
+          ui.print_progress(task, model.get_progress(task), many)
+          many = True
+      #pause program for some time
+      logic.user_input("Press any key to continue s")
   else:
     ui.print_message("Good-bye Thanks for Using Progress Tracker")
     break
