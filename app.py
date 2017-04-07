@@ -17,15 +17,20 @@ while(True):
   elif user_input == "2":
     course = logic.user_input("Please enter your task to be queried")
     # query dictionary
-    ui.print_progress(course, model.get_progress(course))
+    if model.get_task(course):
+        ui.print_progress(course, model.get_progress(course))
+    else:
+        ui.print_message("Sorry this task has not been added")
     logic.user_input("Press any key to continue")
   elif user_input == "3":
       many = False
       for task in model.get_tasks():
           ui.print_progress(task, model.get_progress(task), many)
           many = True
+      if len(model.get_tasks()) == 0:
+          ui.print_message("No task added yet ")
       #pause program for some time
-      logic.user_input("Press any key to continue s")
+      logic.user_input("Press any key to continue ")
   else:
     ui.print_message("Good-bye Thanks for Using Progress Tracker")
     break
