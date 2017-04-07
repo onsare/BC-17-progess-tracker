@@ -32,3 +32,7 @@ def insert_progress(task, progress):
     return True
   else:
     return False
+def print_progress(task, progress):
+  print("_"*20 )
+  print("Task" + " "*8 + 'Progress' )
+  print(str(task) + " "*10 + str(progress)+ "%")
