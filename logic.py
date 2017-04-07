@@ -4,6 +4,6 @@ def user_input():
 
   input_string = raw_input("Please Add a task: ")
 
-  print(input_string)
+  # print(input_string)
 
 user_input()
